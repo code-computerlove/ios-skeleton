@@ -1,16 +1,17 @@
 import Foundation
-import SwiftyJSON
+import UIKit
 
 
 protocol MainModuleWireframeProtocol: class {
 	
 	init(window: UIWindow, config: AppConfig)
-	func testModuleSetup()
+	func presentRootScreen(viewModel: ExampleViewModel)
 }
 
-@objc protocol MainModuleViewProtocol: class {
+protocol MainModuleViewProtocol: class {
 	
-	var eventHandler: MainPresenter { get set }
+	var eventHandler: MainModulePresenterProtocol! { get set }
+	func testModuleSetup()
 }
 
 protocol MainModulePresenterProtocol: class {

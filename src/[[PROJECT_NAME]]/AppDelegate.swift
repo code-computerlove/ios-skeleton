@@ -8,29 +8,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
-		let appConfig = createAppConfiguration()
-		self.mainWireframe = MainWireframe(initWithWindow:self.window, config:appConfig)
+		if (self.window != nil) {
+			let appConfig = createAppConfiguration()
+			self.mainWireframe = MainWireframe(window:self.window!, config:appConfig)
+		}
 		
 		return true
 	}
 	
-	func createAppConfiguration() {
+	func createAppConfiguration() -> AppConfig {
 		
 		let appConfig = AppConfig()
 		
-		let documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true)[0]
-		let contentDirPath = documentsPath.stringByAppendingPathComponent("content");
+		let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true);
+		let contentDirPath = paths[0].stringByAppendingPathComponent("content");
 		
-//		
-//		if (![[NSFileManager defaultManager] fileExistsAtPath:contentDirPath]) {
-//			[[NSFileManager defaultManager] createDirectoryAtPath:contentDirPath withIntermediateDirectories:NO attributes:nil error:nil];
-//		}
-//		
-//		NSString *appContentFilePath = [contentDirPath stringByAppendingPathComponent:@"content.json"];
-//		
-//		appConfig.contentExists = [[NSFileManager defaultManager] fileExistsAtPath:appContentFilePath];
-//		appConfig.appContentFilePath = appContentFilePath;
-		
+		if !NSFileManager.defaultManager().fileExistsAtPath(contentDirPath) {
+			
+			try! NSFileManager.defaultManager().createDirectoryAtPath(contentDirPath, withIntermediateDirectories: false, attributes: nil)
+			
+			if let appContentFilePath = NSURL(fileURLWithPath: contentDirPath).URLByAppendingPathComponent("content.json").path {
+				
+				appConfig.appContentFilePath = appContentFilePath
+			}
+		}
+
 		return appConfig;
 	}
 }

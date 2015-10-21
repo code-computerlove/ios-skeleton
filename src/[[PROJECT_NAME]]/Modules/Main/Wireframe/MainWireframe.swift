@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 @objc class MainWireframe: NSObject, MainModuleWireframeProtocol {
 	
@@ -27,10 +28,12 @@ import Foundation
 		userInterface.eventHandler = presenter
 		interactor.presenter = presenter
 
-		let navigationController = UINavigationController()
+		var navigationController = UINavigationController()
 		
-		if viewController.childViewControllers[0] {
-			navigationController = viewController.childViewControllers[0]
+		if !viewController.childViewControllers.isEmpty {
+			if viewController.childViewControllers[0] is UINavigationController {
+				navigationController = viewController.childViewControllers[0] as! UINavigationController
+			}
 		}
 
 		window.rootViewController = viewController;
@@ -41,19 +44,9 @@ import Foundation
 		window.backgroundColor = UIColor.whiteColor()
 	}
 	
-	func showContentUpdateView(viewModel: ContentUpdateViewModel, fromView: UIViewController) {
+	func presentRootScreen(viewModel: ExampleViewModel) {
 		
-		let updateViewController = DPPContentUpdaterViewController(title: viewModel.title, versionNumber: viewModel.version, releaseNotes: viewModel.notes, mediaSize: viewModel.mediaSize, isPreview: viewModel.isPreview)
-		
-		updateViewController.delegate = fromView as? protocol<DPPContentUpdaterDelegate>
-		
-		fromView.modalPresentationStyle = UIModalPresentationStyle.PageSheet
-		fromView.presentViewController(updateViewController, animated: true, completion: nil)
-	}
-	
-	func presentRootScreen(viewModel: CollectionScreenViewModel) {
-		
-		let gridWireframe = GridViewWireframe(mainWireframe: self)
-		gridWireframe.presentSelfWithViewModel(viewModel)
+		let exampleWireframe = ExampleWireframe(mainWireframe: self)
+		exampleWireframe.presentSelfWithViewModel(viewModel)
 	}
 }

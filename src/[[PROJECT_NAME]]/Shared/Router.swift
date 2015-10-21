@@ -1,7 +1,8 @@
 import Foundation
+import UIKit
 
 
-@objc class Router: NSObject {
+class Router: NSObject {
 
 	let navigationController: UINavigationController
 	var topViewController: UIViewController

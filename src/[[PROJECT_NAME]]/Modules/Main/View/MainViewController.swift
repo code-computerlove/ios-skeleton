@@ -4,6 +4,8 @@ import UIKit
 
 class MainViewController: UIViewController, MainModuleViewProtocol {
 	
+	var eventHandler: MainModulePresenterProtocol!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -14,8 +16,6 @@ class MainViewController: UIViewController, MainModuleViewProtocol {
 	//MainModuleViewProtocol Functions
 	
 	func testModuleSetup() {
-		
-		let alertController = AlertController()
 		
 	}
 }

@@ -9,4 +9,5 @@ target '[[PROJECT_NAME]]' do
     pod 'Alamofire', '2.0.2'
     pod 'ObjectMapper'
 	pod 'SwiftyJSON', '~> 2.3'
+	pod 'CryptoSwift'
 end

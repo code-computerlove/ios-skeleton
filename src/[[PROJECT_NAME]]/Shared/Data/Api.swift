@@ -9,10 +9,12 @@ class Api {
     let FileErrorDomain = "FileErrorDomain"
     var dateFormatter: NSDateFormatter
 	let baseUrl: String
+	let downloadDirectoryUrl: NSURL
 	
-	required init(baseUrl: String) {
+	required init(baseUrl: String, downloadDirectoryUrl: NSURL) {
 		
 		self.baseUrl = baseUrl
+		self.downloadDirectoryUrl = downloadDirectoryUrl
 		
         dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier:"en_GB")
@@ -33,12 +35,8 @@ class Api {
         
         let destination: (NSURL, NSHTTPURLResponse) -> (NSURL) = {
             (temporaryURL, response) in
-            
-            if let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as? NSURL {
-                return directoryURL.URLByAppendingPathComponent("/content\(outputPathUrl)")
-            }
-            
-            return temporaryURL
+
+            return self.downloadDirectoryUrl
         }
         
         Alamofire.download(requestWithError.request, destination: destination)
@@ -134,8 +132,13 @@ class Api {
 		let secretBytes = Array(secret.utf8)
 		let messageBytes = Array(message.utf8)
 		
-		if let mac = Authenticator.HMAC(key: secretBytes, variant: HMAC.Variant.sha1).authenticate(messageBytes) {
+		do {
+			let authenticator = Authenticator.HMAC(key: secretBytes, variant: HMAC.Variant.sha1)
+			let mac = try authenticator.authenticate(messageBytes)
 			return NSString(data: NSData.withBytes(mac), encoding: NSUTF8StringEncoding)
+			
+		} catch {
+			NSLog("Could not authenticate HMAC string")
 		}
 		
 		return nil

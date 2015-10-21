@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BDF5771C1BD7C52B0042652F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF576491BD7C52B0042652F /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		BDF577921BD7C52B0042652F /* ApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577171BD7C52B0042652F /* ApiTests.swift */; settings = {ASSET_TAGS = (); }; };
-		BDF577941BD7C52B0042652F /* MainInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577191BD7C52B0042652F /* MainInteractorTests.swift */; settings = {ASSET_TAGS = (); }; };
 		BDF577ED1BD7C7D20042652F /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577971BD7C7D20042652F /* AppConfig.swift */; settings = {ASSET_TAGS = (); }; };
 		BDF577EF1BD7C7D20042652F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577991BD7C7D20042652F /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
 		BDF577F31BD7C7D20042652F /* ISO8601DateTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF5779F1BD7C7D20042652F /* ISO8601DateTransformer.swift */; settings = {ASSET_TAGS = (); }; };
@@ -31,6 +29,9 @@
 		BDF578261BD7C9E90042652F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF578251BD7C9E90042652F /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		BDF578291BD7CA680042652F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF578281BD7CA680042652F /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		BDF5784A1BD7CE150042652F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF578491BD7CE150042652F /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		BDF578771BD7D8C80042652F /* ApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577171BD7C52B0042652F /* ApiTests.swift */; };
+		BDF578781BD7D8C80042652F /* MainInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577191BD7C52B0042652F /* MainInteractorTests.swift */; };
+		BDF5787B1BD7DADF0042652F /* ExampleWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF5787A1BD7DADF0042652F /* ExampleWireframe.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		BDF578251BD7C9E90042652F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDF578281BD7CA680042652F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDF578491BD7CE150042652F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BDF5787A1BD7DADF0042652F /* ExampleWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleWireframe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,19 +94,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A89875B7B84F7A18BFFF1A05 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BDA84D751BBE86F5009486AB = {
 			isa = PBXGroup;
 			children = (
 				BDF576451BD7C52B0042652F /* [[PROJECT_NAME]] */,
 				BDF577161BD7C52B0042652F /* [[PROJECT_NAME]]Tests */,
-				A89875B7B84F7A18BFFF1A05 /* Frameworks */,
 				BDA84D7F1BBE86F5009486AB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,13 +115,13 @@
 		BDF576451BD7C52B0042652F /* [[PROJECT_NAME]] */ = {
 			isa = PBXGroup;
 			children = (
-				BDF5779A1BD7C7D20042652F /* Enitites */,
-				BDF577A61BD7C7D20042652F /* Modules */,
-				BDF577D51BD7C7D20042652F /* Resources */,
-				BDF577DF1BD7C7D20042652F /* Shared */,
-				BDF578481BD7CCDC0042652F /* Supporting Files */,
-				BDF577E61BD7C7D20042652F /* ViewModels */,
 				BDF578281BD7CA680042652F /* AppDelegate.swift */,
+				BDF5779A1BD7C7D20042652F /* Enitites */,
+				BDF577E61BD7C7D20042652F /* ViewModels */,
+				BDF577A61BD7C7D20042652F /* Modules */,
+				BDF577DF1BD7C7D20042652F /* Shared */,
+				BDF577D51BD7C7D20042652F /* Resources */,
+				BDF578481BD7CCDC0042652F /* Supporting Files */,
 			);
 			path = "[[PROJECT_NAME]]";
 			sourceTree = "<group>";
@@ -162,6 +156,7 @@
 		BDF577A61BD7C7D20042652F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				BDF578791BD7DAD20042652F /* Example */,
 				BDF577C41BD7C7D20042652F /* Main */,
 			);
 			path = Modules;
@@ -286,6 +281,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BDF578791BD7DAD20042652F /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				BDF5787A1BD7DADF0042652F /* ExampleWireframe.swift */,
+			);
+			name = Example;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -389,6 +392,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDF578771BD7D8C80042652F /* ApiTests.swift in Sources */,
+				BDF578781BD7D8C80042652F /* MainInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,14 +408,13 @@
 				BDF578111BD7C7D20042652F /* MainWireframe.swift in Sources */,
 				BDF577ED1BD7C7D20042652F /* AppConfig.swift in Sources */,
 				BDF5781D1BD7C7D20042652F /* Router.swift in Sources */,
-				BDF577941BD7C52B0042652F /* MainInteractorTests.swift in Sources */,
 				BDF5781A1BD7C7D20042652F /* DataStoreReaderProtocol.swift in Sources */,
 				BDF5780B1BD7C7D20042652F /* MainInteractor.swift in Sources */,
-				BDF577921BD7C52B0042652F /* ApiTests.swift in Sources */,
 				BDF5781B1BD7C7D20042652F /* DataStoreWriterProtocol.swift in Sources */,
 				BDF5780D1BD7C7D20042652F /* MainPresenter.swift in Sources */,
 				BDF578191BD7C7D20042652F /* Api.swift in Sources */,
 				BDF578211BD7C7D20042652F /* ExampleMapper.swift in Sources */,
+				BDF5787B1BD7DADF0042652F /* ExampleWireframe.swift in Sources */,
 				BDF5780C1BD7C7D20042652F /* MainModuleProtocols.swift in Sources */,
 				BDF577F41BD7C7D20042652F /* ExampleEntity.swift in Sources */,
 				BDF577F31BD7C7D20042652F /* ISO8601DateTransformer.swift in Sources */,
@@ -514,7 +518,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -552,7 +556,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -569,7 +573,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/[[PROJECT_NAME]]/Supporting Files/[[PROJECT_NAME]]-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codecomputerlove.[[PROJECT_NAME]]";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -587,7 +591,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/[[PROJECT_NAME]]/Supporting Files/[[PROJECT_NAME]]-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codecomputerlove.[[PROJECT_NAME]]";
 				PRODUCT_NAME = "$(TARGET_NAME)";
