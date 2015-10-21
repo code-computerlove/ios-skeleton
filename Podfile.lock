@@ -1,0 +1,63 @@
+PODS:
+  - AFNetworking (2.6.0):
+    - AFNetworking/NSURLConnection (= 2.6.0)
+    - AFNetworking/NSURLSession (= 2.6.0)
+    - AFNetworking/Reachability (= 2.6.0)
+    - AFNetworking/Security (= 2.6.0)
+    - AFNetworking/Serialization (= 2.6.0)
+    - AFNetworking/UIKit (= 2.6.0)
+  - AFNetworking/NSURLConnection (2.6.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.0)
+  - AFNetworking/Security (2.6.0)
+  - AFNetworking/Serialization (2.6.0)
+  - AFNetworking/UIKit (2.6.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Alamofire (2.0.2)
+  - CHTCollectionViewWaterfallLayout (0.9.2)
+  - CryptoSwift (0.0.16)
+  - GoogleAnalytics (3.13.0)
+  - Haneke (1.0.1)
+  - JSONModel (1.1.0)
+  - Lambda-Alert (1.0.1)
+  - MBProgressHUD (0.9.1)
+  - ObjectMapper (0.18)
+  - RFQuiltLayout (1.1.1)
+  - SwiftyJSON (2.3.0)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.6)
+  - Alamofire (= 2.0.2)
+  - CHTCollectionViewWaterfallLayout
+  - CryptoSwift
+  - GoogleAnalytics (~> 3.13)
+  - Haneke
+  - JSONModel
+  - Lambda-Alert
+  - MBProgressHUD
+  - ObjectMapper
+  - RFQuiltLayout
+  - SwiftyJSON (~> 2.3)
+
+SPEC CHECKSUMS:
+  AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  CHTCollectionViewWaterfallLayout: 43232febcb3e4d3985cd758718cbe499b21b822f
+  CryptoSwift: 05b7e813763fc7a0e8726e962365d6e09f091098
+  GoogleAnalytics: fcf1f1cad57ae1a9a53520018f0f680ceeeb8b49
+  Haneke: d60be8b96b228633b24708dd153169d6849d6f78
+  JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
+  Lambda-Alert: dadd1e0c1d6a63f8c8300f7aad9f263101c1ccba
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  ObjectMapper: 0dec0fec1e10b707ba94dd0891580a582ab84cf0
+  RFQuiltLayout: aa28fc2d4a262fbca7caa43d9d8ef4b4726c8cd4
+  SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
+
+COCOAPODS: 0.38.2
