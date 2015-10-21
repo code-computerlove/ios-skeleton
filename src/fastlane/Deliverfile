@@ -1,0 +1,39 @@
+default_language "en-US"
+
+ipa "../#{ENV['PROJECT_NAME']}.ipa"
+
+email ""
+screenshots_path "./screenshots"
+
+app_review_information(
+  first_name: "",
+  last_name: "",
+  phone_number: "",
+  email_address: ""
+)
+
+submit_further_information({
+  export_compliance: {
+    encryption_updated: false,
+    cryptography_enabled: false,
+    is_exempt: false
+  },
+  third_party_content: {
+    contains_third_party_content: false,
+    has_rights: false
+  },
+  advertising_identifier: {
+    use_idfa: false,
+    serve_advertisement: false,
+    attribute_advertisement: false,
+    attribute_actions: false,
+    limit_ad_tracking: false
+  }
+})
+
+copyright "#{Time.now.year} App Name"
+
+primary_category ""
+secondary_category ""
+
+changelog File.read("../release_notes.txt")

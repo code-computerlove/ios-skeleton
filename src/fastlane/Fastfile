@@ -1,0 +1,166 @@
+require 'yaml'
+
+fastlane_version "1.10.0"
+
+default_platform :ios
+
+PROJECT_NAME = ENV['PROJECT_NAME']
+FABRIC_API_KEY = ENV['FABRIC_API_KEY']
+FABRIC_SECRET = ENV['FABRIC_BUILD_SECRET']
+GROUPS = ENV['FABRIC_GROUP_ALIASES']
+BUILD_NUMBER = ENV['BUILD_NUMBER']
+
+platform :ios do
+
+  desc "Run all the tests, perform linting and check code coverage"
+  lane :quality do
+    
+    cocoapods
+
+    xctest(
+      sdk: 'iphonesimulator',
+      destination: "name=iPhone 6",
+       build_settings: {
+        "OBJROOT" => "./build"
+      },
+      reports: [
+        {
+          report: "json-compilation-database",
+          output: "./compile_commands.json"
+        },
+        {
+          report: "junit",
+          output: "./junit-report.xml"
+        }
+      ]
+    )
+
+    gcovr(
+      xml_pretty: true,
+      output: "./build/coverage-report.xml"
+    )
+
+    sh %{ (cd .. && oclint-json-compilation-database -e Pods -v oclint_args "-report-type pmd -o oclint_report.xml -max-priority-1=10 -max-priority-2=100 -max-priority-3=1000 -rc LONG_LINE=200") }
+
+  end 
+
+  lane :build do
+
+    cocoapods
+
+    cert
+    sigh( adhoc: true)
+
+    # use the UDID of the newly created provisioning profile
+    ENV["PROFILE_UDID"] = Actions.lane_context[Actions::SharedValues::SIGH_UDID]
+
+    build_number = ENV["BUILD_NUMBER"].to_i
+
+    increment_build_number(
+      build_number: build_number
+    )
+
+    # Set version number to the one at the top of the CHANGELOG
+    changelog = YAML.load_file('../../CHANGELOG.yml')
+    version_number = changelog['upcoming']['version']
+
+    # Increment to the changelog version number
+    increment_version_number(
+      version_number: version_number
+    )
+
+    ipa(
+      workspace: "#{PROJECT_NAME}.xcworkspace",
+      scheme: "#{PROJECT_NAME}",
+      configuration: "Release",
+      clean: true
+    )
+
+    commit_version_bump(
+      message: "Deploying version #{version_number} (#{build_number})",
+      xcodeproj: "./#{PROJECT_NAME}.xcodeproj", 
+      force: true
+    )
+
+    add_git_tag tag: "#{version_number}_#{build_number}"
+    push_to_git_remote
+
+  end
+
+  desc "Submit a new Build to Fabric"
+  desc "This will also make sure the profile is up to date"
+  lane :uat do
+
+    # Set version number to the one at the top of the CHANGELOG
+    changelog = YAML.load_file('../../CHANGELOG.yml')
+    version_number = changelog['upcoming']['version']
+
+    # Generate release notes from CHANGELOG
+    release_notes = changelog['upcoming']['notes'].map{ |note| note.prepend '- ' }.join("\n")
+
+    out_file = File.new("../release_notes.txt", "w+")
+    out_file.puts(release_notes)
+    out_file.close
+
+    if File.exist?('../release_notes.txt')
+      crashlytics(
+        crashlytics_path: 'Crashlytics.framework', # path to your 'Crashlytics.framework'
+        api_token: FABRIC_API_KEY,
+        build_secret: FABRIC_SECRET,
+        ipa_path: "#{PROJECT_NAME}.ipa",
+        groups: GROUPS,
+        notes_path: 'release_notes.txt'
+      )
+    else 
+      crashlytics(
+        crashlytics_path: 'Crashlytics.framework', # path to your 'Crashlytics.framework'
+        api_token: FABRIC_API_KEY,
+        build_secret: FABRIC_SECRET,
+        ipa_path: "#{PROJECT_NAME}.ipa",
+        groups: GROUPS
+      )
+    end
+
+  end
+
+
+  lane :production do
+
+    cert
+    sigh
+
+    resign(
+      ipa: "#{PROJECT_NAME}.ipa"
+    )
+
+    # Set version number to the one at the top of the CHANGELOG
+    changelog = YAML.load_file('../../CHANGELOG.yml')
+    version_number = changelog['upcoming']['version']
+
+    # Generate release notes from CHANGELOG
+    release_notes = changelog['upcoming']['notes'].map{ |note| note.prepend '- ' }.join("\n")
+
+    out_file = File.new("../release_notes.txt", "w+")
+    out_file.puts(release_notes)
+    out_file.close
+
+    Actions.lane_context[SharedValues::VERSION_NUMBER] = version_number
+    Actions.lane_context[SharedValues::IPA_OUTPUT_PATH] = File.expand_path("../#{PROJECT_NAME}.ipa")
+   
+    deliver(
+      skip_deploy: true, 
+      force: true
+    )
+
+  end
+
+  after_all do |lane|
+
+  end
+
+
+  error do |lane, exception|
+    
+  end
+
+end

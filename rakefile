@@ -1,0 +1,32 @@
+require 'rubygems'
+require 'bundler/setup'
+
+## Tasks ##
+
+task :default => :test
+
+task :test do
+  Dir.chdir('src') do
+    sh %{fastlane quality}
+  end
+end
+
+task :build do
+  Dir.chdir('src') do
+    sh %{fastlane build}
+  end
+end
+
+task :deploy_uat do
+  Dir.chdir('src') do
+    sh %{fastlane uat}
+  end
+end
+
+task :deploy_prod do
+   Dir.chdir('src') do
+    sh %{fastlane production}
+  end
+end
+
+
