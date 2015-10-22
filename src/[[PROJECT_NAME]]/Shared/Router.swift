@@ -21,11 +21,6 @@ class Router: NSObject {
 	
 	func navigateToViewController(viewController: UIViewController) {
 		
-		if self.navigationController.viewControllers.isEmpty {
-			self.navigationController.viewControllers = [viewController]
-			return
-		}
-		
 		self.topViewController = viewController;
 		self.navigationController.pushViewController(viewController, animated: true)
 	}

@@ -1,15 +1,15 @@
 import Foundation
 import ObjectMapper
 
-@objc class MainPresenter: NSObject, MainModulePresenterProtocol, MainModuleInteractorOutputProtocol {
+@objc class MainPresenter: NSObject, MainPresenterProtocol, MainInteractorOutputProtocol {
 	
-	let userInterface: MainModuleViewProtocol
-	let interactor: MainModuleInteractorInputProtocol
-	let wireframe: MainModuleWireframeProtocol
+	let userInterface: MainViewProtocol
+	let interactor: MainInteractorInputProtocol
+	let wireframe: MainWireframeProtocol
 	
-	//MainModulePresenterProtocol Functions
+	//MainPresenterProtocol Functions
 	
-	required init(view: MainModuleViewProtocol, interactor: MainModuleInteractorInputProtocol, wireframe: MainModuleWireframeProtocol) {
+	required init(view: MainViewProtocol, interactor: MainInteractorInputProtocol, wireframe: MainWireframeProtocol) {
 
 		self.userInterface = view
 		self.interactor = interactor
@@ -19,6 +19,7 @@ import ObjectMapper
 	}
 	
 	func prepareView() {
-		self.userInterface.testModuleSetup()
+		let viewModel = ExampleViewModel(title: "Example View Model")
+		self.wireframe.presentRootScreen(viewModel)
 	}
 }

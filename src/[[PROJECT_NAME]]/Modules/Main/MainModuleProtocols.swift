@@ -2,36 +2,35 @@ import Foundation
 import UIKit
 
 
-protocol MainModuleWireframeProtocol: class {
+protocol MainWireframeProtocol: class {
 	
 	init(window: UIWindow, config: AppConfig)
 	func presentRootScreen(viewModel: ExampleViewModel)
 }
 
-protocol MainModuleViewProtocol: class {
+protocol MainViewProtocol: class {
 	
-	var eventHandler: MainModulePresenterProtocol! { get set }
-	func testModuleSetup()
+	var eventHandler: MainPresenterProtocol! { get set }
 }
 
-protocol MainModulePresenterProtocol: class {
+protocol MainPresenterProtocol: class {
 	
-	init(view: MainModuleViewProtocol, interactor: MainModuleInteractorInputProtocol, wireframe: MainModuleWireframeProtocol)
-	var userInterface: MainModuleViewProtocol { get }
+	init(view: MainViewProtocol, interactor: MainInteractorInputProtocol, wireframe: MainWireframeProtocol)
+	var userInterface: MainViewProtocol { get }
 	func prepareView()
 }
 
-protocol MainModuleInteractorOutputProtocol: class {
+protocol MainInteractorOutputProtocol: class {
 	
 
 }
 
-protocol MainModuleInteractorInputProtocol: class {
+protocol MainInteractorInputProtocol: class {
 	
-	init(dataManager: MainModuleDataManagerProtocol)
+	init(dataManager: MainDataManagerProtocol)
 }
 
-protocol MainModuleDataManagerProtocol: class {
+protocol MainDataManagerProtocol: class {
 	
 	init(dataStore: protocol<DataStoreReaderProtocol, DataStoreWriterProtocol>)
 }

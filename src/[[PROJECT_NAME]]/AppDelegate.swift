@@ -11,6 +11,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if (self.window != nil) {
 			let appConfig = createAppConfiguration()
 			self.mainWireframe = MainWireframe(window:self.window!, config:appConfig)
+			
+			application.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
+			self.window!.backgroundColor = UIColor.whiteColor()
 		}
 		
 		return true

@@ -2,20 +2,16 @@ import Foundation
 import UIKit
 
 
-class MainViewController: UIViewController, MainModuleViewProtocol {
+class MainViewController: UIViewController, MainViewProtocol {
 	
-	var eventHandler: MainModulePresenterProtocol!
+	var eventHandler: MainPresenterProtocol!
 	
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
 		
-		
+		self.eventHandler.prepareView()
 	}
 	
 	
-	//MainModuleViewProtocol Functions
-	
-	func testModuleSetup() {
-		
-	}
+	//MainViewProtocol Functions
 }
