@@ -4,7 +4,7 @@ import UIKit
 
 class Router: NSObject {
 
-	let navigationController: UINavigationController
+	weak var navigationController: UINavigationController?
 	var topViewController: UIViewController
 	
 	init(rootViewController: UIViewController, navigationController: UINavigationController) {
@@ -16,12 +16,12 @@ class Router: NSObject {
 	}
 	
 	func isViewControllerPresented(viewController: UIViewController) -> Bool {
-		return (self.navigationController.topViewController?.isKindOfClass(viewController.classForCoder))!
+		return (self.navigationController?.topViewController?.isKindOfClass(viewController.classForCoder))!
 	}
 	
 	func navigateToViewController(viewController: UIViewController) {
 		
 		self.topViewController = viewController;
-		self.navigationController.pushViewController(viewController, animated: true)
+		self.navigationController?.pushViewController(viewController, animated: true)
 	}
 }
