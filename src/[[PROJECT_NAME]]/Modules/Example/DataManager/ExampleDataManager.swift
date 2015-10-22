@@ -2,7 +2,7 @@ import Foundation
 
 class ExampleDataManager: ExampleDataManagerProtocol {
 
-	var appContentDataStore: DataStoreReaderProtocol!
+	private let appContentDataStore: DataStoreReaderProtocol
 	
 	// ExampleDataManagerProtocol Functions
 	

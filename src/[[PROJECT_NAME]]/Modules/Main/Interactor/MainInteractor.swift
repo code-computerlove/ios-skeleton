@@ -5,7 +5,7 @@ import SwiftyJSON
 class MainInteractor: MainInteractorInputProtocol {
 
 	weak var presenter: MainInteractorOutputProtocol?
-	let dataManager: MainDataManagerProtocol
+	private let dataManager: MainDataManagerProtocol
 	
 	
 	// MainInteractorInputProtocol Functions

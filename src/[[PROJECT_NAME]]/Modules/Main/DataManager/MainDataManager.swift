@@ -5,7 +5,7 @@ import ObjectMapper
 
 class MainDataManager: MainDataManagerProtocol {
 	
-	let dataStore: protocol<DataStoreReaderProtocol, DataStoreWriterProtocol>
+	private let dataStore: protocol<DataStoreReaderProtocol, DataStoreWriterProtocol>
 	
 	// MainDataManagerProtocol Functions
 	

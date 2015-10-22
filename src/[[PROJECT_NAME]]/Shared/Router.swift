@@ -16,11 +16,10 @@ class Router: NSObject {
 	}
 	
 	func isViewControllerPresented(viewController: UIViewController) -> Bool {
-		return (self.navigationController?.topViewController?.isKindOfClass(viewController.classForCoder))!
+		return self.topViewController.isKindOfClass(viewController.classForCoder)
 	}
 	
 	func navigateToViewController(viewController: UIViewController) {
-		
 		self.topViewController = viewController;
 		self.navigationController?.pushViewController(viewController, animated: true)
 	}

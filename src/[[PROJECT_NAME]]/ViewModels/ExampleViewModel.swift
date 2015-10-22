@@ -1,5 +1,6 @@
 import Foundation
 
+
 struct ExampleViewModel {
 	
 	let title: String?

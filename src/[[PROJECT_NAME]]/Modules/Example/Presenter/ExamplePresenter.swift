@@ -1,10 +1,11 @@
 import Foundation
 
+
 class ExamplePresenter: ExamplePresenterProtocol, ExampleInteractorOutputProtocol {
 	
-	let userInterface: ExampleViewProtocol
-	let interactor: ExampleInteractorInputProtocol
-	let wireframe: ExampleWireframeProtocol
+	private weak var userInterface: ExampleViewProtocol?
+	private let interactor: ExampleInteractorInputProtocol
+	private let wireframe: ExampleWireframeProtocol
 	
 	//ExamplePresenterProtocol Functions
 	

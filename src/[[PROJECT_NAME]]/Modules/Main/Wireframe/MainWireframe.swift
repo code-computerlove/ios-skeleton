@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-@objc class MainWireframe: NSObject, MainWireframeProtocol {
+class MainWireframe: NSObject, MainWireframeProtocol {
 	
 	let config: AppConfig
 	var router: Router!
@@ -9,12 +9,10 @@ import UIKit
 	required init(window: UIWindow, config: AppConfig) {
 
 		self.config = config
-		
 		super.init()
 		
 		let viewController = createModule()
 		_ = viewController.view
-		
 		
 		var navigationController: UINavigationController?
 		
@@ -43,10 +41,8 @@ import UIKit
 	private func createModule() -> UIViewController {
 		
 		let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-		
 		let viewController = storyboard.instantiateInitialViewController()!
 		let userInterface = viewController as! MainViewProtocol
-		
 		let dataStore = JsonFileDataStore(path: config.appContentFilePath);
 		let dataManager: MainDataManagerProtocol = MainDataManager(dataStore: dataStore)
 		let interactor = MainInteractor(dataManager: dataManager)

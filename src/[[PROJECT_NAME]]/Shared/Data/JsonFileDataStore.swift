@@ -2,7 +2,8 @@ import Foundation
 import SwiftyJSON
 import ObjectMapper
 
-@objc class JsonFileDataStore : NSObject, DataStoreReaderProtocol, DataStoreWriterProtocol {
+
+class JsonFileDataStore : NSObject, DataStoreReaderProtocol, DataStoreWriterProtocol {
 	
 	enum DataError : ErrorType {
 		case ErrorWithMessage(message: String)
@@ -14,7 +15,6 @@ import ObjectMapper
 	required init(path: String) {
 		
 		self.filePath = path;
-
 		super.init()
 		
 		if NSFileManager.defaultManager().fileExistsAtPath(self.filePath) {
@@ -63,10 +63,8 @@ import ObjectMapper
 	}
 	
 	func overwriteData(data: String) throws {
-		
 		self.data = JSON(data)
 		try self.persistData();
-		
 		loadDataFromStorage()
 	}
 	

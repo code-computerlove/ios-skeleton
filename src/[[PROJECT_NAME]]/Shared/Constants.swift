@@ -1,7 +1,7 @@
 import Foundation
 
+
 struct Constants {
-    
     struct API {
         static let ContentTypeKey = "Content-Type";
         static let RequestContentType = "application/x-www-form-urlencoded"

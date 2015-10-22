@@ -1,11 +1,12 @@
 import Foundation
 import ObjectMapper
 
-@objc class MainPresenter: NSObject, MainPresenterProtocol, MainInteractorOutputProtocol {
+
+class MainPresenter: NSObject, MainPresenterProtocol, MainInteractorOutputProtocol {
 	
-	let userInterface: MainViewProtocol
-	let interactor: MainInteractorInputProtocol
-	let wireframe: MainWireframeProtocol
+	private weak var userInterface: MainViewProtocol?
+	private let interactor: MainInteractorInputProtocol
+	private let wireframe: MainWireframeProtocol
 	
 	//MainPresenterProtocol Functions
 	

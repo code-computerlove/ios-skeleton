@@ -10,10 +10,9 @@ class ExampleViewController: UIViewController, ExampleViewProtocol {
 	@IBOutlet weak var titleLabel: UILabel!
 	
 	override func viewDidLoad() {
-		
 		super.viewDidLoad()
-		self.eventHandler.prepareView()
 		
+		self.eventHandler.prepareView()
 		self.titleLabel.text = viewModel?.title
 	}
 	

@@ -3,7 +3,7 @@ import Foundation
 class ExampleInteractor: ExampleInteractorInputProtocol {
 	
 	weak var presenter: ExampleInteractorOutputProtocol?
-	let dataManager: ExampleDataManagerProtocol
+	private let dataManager: ExampleDataManagerProtocol
 	
 	
 	// ExampleInteractorInputProtocol Functions

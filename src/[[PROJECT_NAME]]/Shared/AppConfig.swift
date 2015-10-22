@@ -1,7 +1,7 @@
 import Foundation
 
 
-@objc class AppConfig: NSObject {
+class AppConfig: NSObject {
 	
 	var appContentFilePath: String = ""	
 }

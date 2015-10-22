@@ -1,5 +1,6 @@
 import Foundation
 
+
 protocol DataStoreWriterProtocol {
 	
 	func addObject(key: String, object: AnyObject)

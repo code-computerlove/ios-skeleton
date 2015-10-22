@@ -1,6 +1,7 @@
 import Foundation
 import SwiftyJSON
 
+
 protocol DataStoreReaderProtocol {
 	
 	init(path: String)

@@ -4,7 +4,7 @@ import UIKit
 
 class ExampleWireframe : ExampleWireframeProtocol {
 
-	let mainWireframe: MainWireframe
+	private let mainWireframe: MainWireframe
 	
 	required init(mainWireframe: MainWireframe) {
 		self.mainWireframe = mainWireframe
@@ -14,7 +14,6 @@ class ExampleWireframe : ExampleWireframeProtocol {
 		
 		let moduleView = self.createModule()
 		moduleView.viewModel = viewModel
-		
 		mainWireframe.router.navigateToViewController(moduleView as! UIViewController)
 	}
 	
@@ -22,13 +21,11 @@ class ExampleWireframe : ExampleWireframeProtocol {
 		
 		let storyboard = UIStoryboard(name: "Example", bundle: nil)
 		let viewController : ExampleViewProtocol = storyboard.instantiateInitialViewController() as! ExampleViewProtocol
-		
 		let appContentDataStore: DataStoreReaderProtocol = JsonFileDataStore(path: mainWireframe.config.appContentFilePath)
 		let dataManager: ExampleDataManagerProtocol = ExampleDataManager(appContentDataStore: appContentDataStore)
 		let interactor: ExampleInteractorInputProtocol = ExampleInteractor(dataManager: dataManager)
 		let presenter: protocol<ExamplePresenterProtocol, ExampleInteractorOutputProtocol> = ExamplePresenter(view: viewController, interactor: interactor, wireframe: self)
 		
-		//Add weak references
 		viewController.eventHandler = presenter
 		interactor.presenter = presenter
 		

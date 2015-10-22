@@ -1,7 +1,8 @@
 import Foundation
 import ObjectMapper
 
-@objc class ExampleEntity: NSObject, Mappable {
+
+class ExampleEntity: NSObject, Mappable {
 
 	var title: String!
 	
@@ -9,12 +10,10 @@ import ObjectMapper
 		static let title = "title"
 	}
 	
-	required init?(_ map: Map) {
-		
-	}
+	required init?(_ map: Map) { }
 	
 	func mapping(map: Map) {
 		
-		title			<- map[K.title]
+		title	<- map[K.title]
 	}
 }
