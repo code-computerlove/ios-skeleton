@@ -31,7 +31,7 @@ submit_further_information({
   }
 })
 
-copyright "#{Time.now.year} App Name"
+copyright "#{Time.now.year} [[PROJECT_NAME]]"
 
 primary_category ""
 secondary_category ""

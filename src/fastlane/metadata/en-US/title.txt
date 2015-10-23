@@ -1,1 +1,1 @@
-App Name
+[[PROJECT_NAME]]

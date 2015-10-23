@@ -1,6 +1,6 @@
 require 'yaml'
 
-fastlane_version "1.10.0"
+fastlane_version "1.34.0"
 
 default_platform :ios
 
