@@ -10,4 +10,6 @@ target '[[PROJECT_NAME]]' do
     pod 'ObjectMapper'
 	pod 'SwiftyJSON', '~> 2.3'
 	pod 'CryptoSwift'
+	pod 'Fabric'
+	pod 'Crashlytics'
 end

@@ -1,4 +1,7 @@
 import UIKit
+import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			application.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
 			self.window!.backgroundColor = UIColor.whiteColor()
 		}
+		
+		Fabric.with([Crashlytics.self()])
 		
 		return true
 	}

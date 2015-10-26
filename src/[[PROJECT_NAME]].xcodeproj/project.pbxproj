@@ -375,6 +375,7 @@
 				BDA84D7A1BBE86F5009486AB /* Sources */,
 				BDA84D7B1BBE86F5009486AB /* Frameworks */,
 				BDA84D7C1BBE86F5009486AB /* Resources */,
+				BD85FBC51BDE8C400098F342 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -445,6 +446,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BD85FBC51BDE8C400098F342 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Running Crashlytics\"\n${PODS_ROOT}/Fabric/Fabric.framework/run 0ae7c1dd2c77628cbc322a6aa34f35759ddffb50 58a040c3b888bc830c2460bbfa0992befa37b3f3b23f5286087e3ab1a59595a1";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3F20C42A1BBED5FD007B72AB /* Sources */ = {
