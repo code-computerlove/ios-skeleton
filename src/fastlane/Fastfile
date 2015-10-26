@@ -69,12 +69,7 @@ platform :ios do
       version_number: version_number
     )
 
-    ipa(
-      workspace: "#{PROJECT_NAME}.xcworkspace",
-      scheme: "#{PROJECT_NAME}",
-      configuration: "Release",
-      clean: true
-    )
+    gym(scheme: "#{PROJECT_NAME}", use_legacy_build_api: true)
 
     commit_version_bump(
       message: "Deploying version #{version_number} (#{build_number})",
