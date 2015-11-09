@@ -12,12 +12,12 @@ class ExampleWireframe : ExampleWireframeProtocol {
 	
 	func presentSelfWithViewModel(viewModel: ExampleViewModel) {
 		
-		let moduleView = self.createModule()
-		moduleView.viewModel = viewModel
-		mainWireframe.router.navigateToViewController(moduleView as! UIViewController)
+		let module = self.createModule()
+		module.presenter.viewModel = viewModel
+		mainWireframe.router.navigateToViewController(module.view as! UIViewController)
 	}
 	
-	private func createModule() -> ExampleViewProtocol {
+	private func createModule() -> (presenter: ExamplePresenterProtocol, view: ExampleViewProtocol) {
 		
 		let storyboard = UIStoryboard(name: "Example", bundle: nil)
 		let viewController : ExampleViewProtocol = storyboard.instantiateInitialViewController() as! ExampleViewProtocol
@@ -29,6 +29,6 @@ class ExampleWireframe : ExampleWireframeProtocol {
 		viewController.eventHandler = presenter
 		interactor.presenter = presenter
 		
-		return viewController
+		return (presenter, viewController)
 	}
 }

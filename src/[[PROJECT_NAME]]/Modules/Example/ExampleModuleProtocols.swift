@@ -9,11 +9,12 @@ protocol ExampleWireframeProtocol: class {
 
 protocol ExampleViewProtocol: class {
 	var eventHandler: ExamplePresenterProtocol! { get set }
-	var viewModel: ExampleViewModel? { get set }
+	func setTitle(title: String?)
 }
 
 protocol ExamplePresenterProtocol: class {
 	init(view: ExampleViewProtocol, interactor: ExampleInteractorInputProtocol, wireframe: ExampleWireframeProtocol)
+	var viewModel: ExampleViewModel? { get set }
 	func prepareView()
 }
 

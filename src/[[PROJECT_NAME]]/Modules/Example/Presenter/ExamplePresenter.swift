@@ -3,9 +3,12 @@ import Foundation
 
 class ExamplePresenter: ExamplePresenterProtocol, ExampleInteractorOutputProtocol {
 	
-	private weak var userInterface: ExampleViewProtocol?
+	private weak var view: ExampleViewProtocol?
 	private let interactor: ExampleInteractorInputProtocol
 	private let wireframe: ExampleWireframeProtocol
+	
+	var viewModel: ExampleViewModel?
+	
 	
 	//ExamplePresenterProtocol Functions
 	
@@ -17,6 +20,6 @@ class ExamplePresenter: ExamplePresenterProtocol, ExampleInteractorOutputProtoco
 	}
 	
 	func prepareView() {
-		
+		self.view?.setTitle(viewModel?.title)
 	}
 }

@@ -128,11 +128,11 @@
 			isa = PBXGroup;
 			children = (
 				BDAD6C521BD901F100BB53B2 /* DataManager */,
-				BDAD6C541BD901F100BB53B2 /* ExampleModuleProtocols.swift */,
 				BDAD6C551BD901F100BB53B2 /* Interactor */,
 				BDAD6C571BD901F100BB53B2 /* Presenter */,
 				BDAD6C591BD901F100BB53B2 /* View */,
 				BDAD6C5C1BD901F100BB53B2 /* Wireframe */,
+				BDAD6C541BD901F100BB53B2 /* ExampleModuleProtocols.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
