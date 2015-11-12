@@ -34,8 +34,10 @@ class MainWireframe: NSObject, MainWireframeProtocol {
 	
 	func presentRootScreen(viewModel: ExampleViewModel) {
 		
-		let exampleWireframe = ExampleWireframe(mainWireframe: self)
-		exampleWireframe.presentSelfWithViewModel(viewModel)
+		//Create and present your module here. e.g.
+		//
+		//let exampleWireframe = ExampleWireframe(mainWireframe: self)
+		//exampleWireframe.presentSelfWithViewModel(viewModel)
 	}
 	
 	private func createModule() -> UIViewController {
