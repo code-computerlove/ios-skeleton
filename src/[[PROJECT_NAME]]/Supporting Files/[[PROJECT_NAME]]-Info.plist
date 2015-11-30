@@ -6,6 +6,20 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>[[PROJECT_NAME]]</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>0ae7c1dd2c77628cbc322a6aa34f35759ddffb50</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
