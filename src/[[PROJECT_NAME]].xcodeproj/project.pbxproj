@@ -31,6 +31,7 @@
 		BDF5784A1BD7CE150042652F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF578491BD7CE150042652F /* MainViewController.swift */; };
 		BDF578771BD7D8C80042652F /* ApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577171BD7C52B0042652F /* ApiTests.swift */; };
 		BDF578781BD7D8C80042652F /* MainInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577191BD7C52B0042652F /* MainInteractorTests.swift */; };
+		DFB76EB0C6D30944EB6AD918 /* Pods___PROJECT_NAME__.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85EC942184C5F4ADE9D86DC9 /* Pods___PROJECT_NAME__.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		025CB10DDFDA568D6D5F7F1C /* Pods-[[PROJECT_NAME]].release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-[[PROJECT_NAME]].release.xcconfig"; path = "Pods/Target Support Files/Pods-[[PROJECT_NAME]]/Pods-[[PROJECT_NAME]].release.xcconfig"; sourceTree = "<group>"; };
 		119F9250CC8167C284C7BF85 /* Pods-[[PROJECT_NAME]].debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-[[PROJECT_NAME]].debug.xcconfig"; path = "Pods/Target Support Files/Pods-[[PROJECT_NAME]]/Pods-[[PROJECT_NAME]].debug.xcconfig"; sourceTree = "<group>"; };
 		3F20C42E1BBED5FD007B72AB /* [[PROJECT_NAME]]Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "[[PROJECT_NAME]]Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85EC942184C5F4ADE9D86DC9 /* Pods___PROJECT_NAME__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___PROJECT_NAME__.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA84D7E1BBE86F5009486AB /* [[PROJECT_NAME]].app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "[[PROJECT_NAME]].app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF5764A1BD7C52B0042652F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDF576D81BD7C52B0042652F /* [[PROJECT_NAME]]-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "[[PROJECT_NAME]]-Info.plist"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB76EB0C6D30944EB6AD918 /* Pods___PROJECT_NAME__.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +100,7 @@
 		75DC51AC0D995D5D1EC1591F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85EC942184C5F4ADE9D86DC9 /* Pods___PROJECT_NAME__.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -327,9 +331,9 @@
 				BDA84D7A1BBE86F5009486AB /* Sources */,
 				BDA84D7B1BBE86F5009486AB /* Frameworks */,
 				BDA84D7C1BBE86F5009486AB /* Resources */,
-				BD85FBC51BDE8C400098F342 /* ShellScript */,
 				0BF40C2AA67F538083A74BFB /* Embed Pods Frameworks */,
 				A603626C0448606447CF4ACE /* Copy Pods Resources */,
+				BD85FBC51BDE8C400098F342 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -457,7 +461,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Running Crashlytics\"\n${PODS_ROOT}/Fabric/Fabric.framework/run 0ae7c1dd2c77628cbc322a6aa34f35759ddffb50 58a040c3b888bc830c2460bbfa0992befa37b3f3b23f5286087e3ab1a59595a1";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0ae7c1dd2c77628cbc322a6aa34f35759ddffb50 58a040c3b888bc830c2460bbfa0992befa37b3f3b23f5286087e3ab1a59595a1";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -574,7 +578,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -618,7 +621,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
