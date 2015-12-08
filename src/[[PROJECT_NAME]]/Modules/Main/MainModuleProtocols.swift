@@ -4,7 +4,7 @@ import UIKit
 
 protocol MainWireframeProtocol: class {
 	init(window: UIWindow, config: AppConfig)
-	func presentRootScreen(viewModel: ExampleViewModel)
+	func presentRootScreen()
 }
 
 protocol MainViewProtocol: class {
@@ -12,7 +12,10 @@ protocol MainViewProtocol: class {
 }
 
 protocol MainPresenterProtocol: class {
-	init(view: MainViewProtocol, interactor: MainInteractorInputProtocol, wireframe: MainWireframeProtocol)
+	init(
+		view: MainViewProtocol, 
+		interactor: MainInteractorInputProtocol, 
+		wireframe: MainWireframeProtocol)
 	func prepareView()
 }
 

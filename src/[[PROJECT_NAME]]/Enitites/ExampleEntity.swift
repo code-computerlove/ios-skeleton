@@ -2,7 +2,7 @@ import Foundation
 import ObjectMapper
 
 
-class ExampleEntity: NSObject, Mappable {
+class ExampleEntity: Mappable {
 
 	var title: String!
 	
@@ -13,7 +13,6 @@ class ExampleEntity: NSObject, Mappable {
 	required init?(_ map: Map) { }
 	
 	func mapping(map: Map) {
-		
 		title	<- map[K.title]
 	}
 }

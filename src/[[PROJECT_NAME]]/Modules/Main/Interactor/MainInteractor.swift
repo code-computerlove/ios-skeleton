@@ -2,15 +2,17 @@ import Foundation
 import SwiftyJSON
 
 
-class MainInteractor: MainInteractorInputProtocol {
+class MainInteractor {
 
 	weak var presenter: MainInteractorOutputProtocol?
 	private let dataManager: MainDataManagerProtocol
 	
-	
-	// MainInteractorInputProtocol Functions
-	
 	required init(dataManager: MainDataManagerProtocol) {
 		self.dataManager = dataManager
 	}
+}
+
+
+extension MainInteractor: MainInteractorInputProtocol {
+	
 }

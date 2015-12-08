@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class MainWireframe: NSObject, MainWireframeProtocol {
+class MainWireframe: MainWireframeProtocol {
 	
 	let config: AppConfig
 	var router: Router!
@@ -9,7 +9,6 @@ class MainWireframe: NSObject, MainWireframeProtocol {
 	required init(window: UIWindow, config: AppConfig) {
 
 		self.config = config
-		super.init()
 		
 		let viewController = createModule()
 		_ = viewController.view
@@ -30,9 +29,11 @@ class MainWireframe: NSObject, MainWireframeProtocol {
 
 		window.rootViewController = viewController;
 		self.router = Router(rootViewController: viewController, navigationController: navigationController!)
+
+		presentRootScreen()
 	}
 	
-	func presentRootScreen(viewModel: ExampleViewModel) {
+	func presentRootScreen() {
 		
 		//Create and present your module here. e.g.
 		//
@@ -45,9 +46,12 @@ class MainWireframe: NSObject, MainWireframeProtocol {
 		let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
 		let viewController = storyboard.instantiateInitialViewController()!
 		let userInterface = viewController as! MainViewProtocol
-		let dataStore = JsonFileDataStore(path: config.appContentFilePath);
-		let dataManager: MainDataManagerProtocol = MainDataManager(dataStore: dataStore)
-		let interactor = MainInteractor(dataManager: dataManager)
+
+		let interactor = MainInteractor(
+			dataManager: MainDataManager(
+				dataStore: JsonFileDataStore(
+					path: config.appContentFilePath)))
+		
 		let presenter = MainPresenter(
 			view: userInterface,
 			interactor: interactor,

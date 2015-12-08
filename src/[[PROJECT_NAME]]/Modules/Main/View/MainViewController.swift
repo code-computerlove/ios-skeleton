@@ -2,16 +2,18 @@ import Foundation
 import UIKit
 
 
-class MainViewController: UIViewController, MainViewProtocol {
+class MainViewController: UIViewController {
 	
 	var eventHandler: MainPresenterProtocol!
 	
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		
+	override func viewDidLoad() {
+
+		super.viewDidLoad()
 		self.eventHandler.prepareView()
 	}
+}
+
+
+extension MainViewController: MainViewProtocol {
 	
-	
-	//MainViewProtocol Functions
 }

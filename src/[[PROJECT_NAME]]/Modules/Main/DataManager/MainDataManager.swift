@@ -3,13 +3,16 @@ import SwiftyJSON
 import ObjectMapper
 
 
-class MainDataManager: MainDataManagerProtocol {
+class MainDataManager {
 	
 	private let dataStore: protocol<DataStoreReaderProtocol, DataStoreWriterProtocol>
-	
-	// MainDataManagerProtocol Functions
 	
 	required init(dataStore: protocol<DataStoreReaderProtocol, DataStoreWriterProtocol>) {
 		self.dataStore = dataStore
 	}
+}
+
+
+extension MainDataManager: MainDataManagerProtocol {
+	
 }
