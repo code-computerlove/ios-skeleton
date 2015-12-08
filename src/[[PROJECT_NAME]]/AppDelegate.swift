@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			self.window!.backgroundColor = UIColor.whiteColor()
 		}
 		
-		Fabric.with([Crashlytics.self()])
+		Fabric.with([Crashlytics.self])
 		
 		return true
 	}

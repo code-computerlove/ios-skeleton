@@ -3,6 +3,15 @@ platform :ios, '8.0'
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
+def testing_pods
+    pod 'Quick', '~> 0.8.0'
+    pod 'Nimble', '3.0.0'
+end
+
+target '[[PROJECT_NAME]]Tests' do
+    testing_pods
+end
+
 target '[[PROJECT_NAME]]' do
     pod 'JSONModel'
     pod 'GoogleAnalytics', '~> 3.13'
