@@ -9,7 +9,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	var mainWireframe: MainWireframe?
 	
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	func application(application: UIApplication, 
+		didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
 		if (self.window != nil) {
 			self.mainWireframe = MainWireframe(
