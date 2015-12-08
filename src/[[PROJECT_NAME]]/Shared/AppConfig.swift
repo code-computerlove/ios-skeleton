@@ -5,7 +5,7 @@ class AppConfig: NSObject {
 	
 	var appContentFilePath: String?
 
-	static func create() {
+	static func create() -> AppConfig {
 		
 		let appConfig = AppConfig()
 		
@@ -22,6 +22,6 @@ class AppConfig: NSObject {
 			}
 		}
 
-		return appConfig;
+		return appConfig
 	}
 }

@@ -12,7 +12,7 @@ class MainPresenter {
 		view: MainViewProtocol, 
 		interactor: MainInteractorInputProtocol, 
 		wireframe: MainWireframeProtocol) {
-			self.userInterface = view
+			self.view = view
 			self.interactor = interactor
 			self.wireframe = wireframe
 	}

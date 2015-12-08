@@ -50,7 +50,7 @@ class MainWireframe: MainWireframeProtocol {
 		let interactor = MainInteractor(
 			dataManager: MainDataManager(
 				dataStore: JsonFileDataStore(
-					path: config.appContentFilePath)))
+					path: config.appContentFilePath!)))
 		
 		let presenter = MainPresenter(
 			view: userInterface,
