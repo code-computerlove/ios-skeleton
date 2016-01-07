@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10659DA1E7AD74B6BA5FA953 /* Pods___PROJECT_NAME__.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A1078860336BB627ED2AE5 /* Pods___PROJECT_NAME__.framework */; };
 		3FB751811C0DB3E90038C226 /* DolphinSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB751801C0DB3E90038C226 /* DolphinSpec.swift */; };
 		85B36DAE6361F19BF65DAB6B /* Pods___PROJECT_NAME__Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38428F6AB229C6180B2E2E7D /* Pods___PROJECT_NAME__Tests.framework */; };
 		BDF5771C1BD7C52B0042652F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDF576491BD7C52B0042652F /* LaunchScreen.storyboard */; };
@@ -93,7 +92,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10659DA1E7AD74B6BA5FA953 /* Pods___PROJECT_NAME__.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
