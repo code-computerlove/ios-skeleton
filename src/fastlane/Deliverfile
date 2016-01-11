@@ -1,8 +1,6 @@
-default_language "en-US"
+ipa "#{ENV['PROJECT_NAME']}.ipa"
 
-ipa "../#{ENV['PROJECT_NAME']}.ipa"
-
-email ""
+username ""
 screenshots_path "./screenshots"
 
 app_review_information(
@@ -12,7 +10,7 @@ app_review_information(
   email_address: ""
 )
 
-submit_further_information({
+submission_information({
   export_compliance: {
     encryption_updated: false,
     cryptography_enabled: false,
@@ -36,4 +34,4 @@ copyright "#{Time.now.year} [[PROJECT_NAME]]"
 primary_category ""
 secondary_category ""
 
-changelog File.read("../release_notes.txt")
+release_notes File.read("../release_notes.txt")

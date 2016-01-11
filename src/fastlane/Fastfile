@@ -14,7 +14,7 @@ platform :ios do
 
   desc "Run all the tests, perform linting and check code coverage"
   lane :quality do
-    
+
     cocoapods
 
     xctest(
@@ -42,7 +42,7 @@ platform :ios do
 
     sh %{ (cd .. && oclint-json-compilation-database -e Pods -v oclint_args "-report-type pmd -o oclint_report.xml -max-priority-1=10 -max-priority-2=100 -max-priority-3=1000 -rc LONG_LINE=200") }
 
-  end 
+  end
 
   lane :build do
 
@@ -73,7 +73,7 @@ platform :ios do
 
     commit_version_bump(
       message: "Deploying version #{version_number} (#{build_number})",
-      xcodeproj: "./#{PROJECT_NAME}.xcodeproj", 
+      xcodeproj: "./#{PROJECT_NAME}.xcodeproj",
       force: true
     )
 
@@ -106,7 +106,7 @@ platform :ios do
         groups: GROUPS,
         notes_path: 'release_notes.txt'
       )
-    else 
+    else
       crashlytics(
         crashlytics_path: 'Crashlytics.framework', # path to your 'Crashlytics.framework'
         api_token: FABRIC_API_KEY,
@@ -141,9 +141,8 @@ platform :ios do
 
     Actions.lane_context[SharedValues::VERSION_NUMBER] = version_number
     Actions.lane_context[SharedValues::IPA_OUTPUT_PATH] = File.expand_path("../#{PROJECT_NAME}.ipa")
-   
+
     deliver(
-      skip_deploy: true, 
       force: true
     )
 
@@ -155,7 +154,7 @@ platform :ios do
 
 
   error do |lane, exception|
-    
+
   end
 
 end
