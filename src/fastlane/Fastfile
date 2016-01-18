@@ -143,6 +143,8 @@ platform :ios do
     Actions.lane_context[SharedValues::IPA_OUTPUT_PATH] = File.expand_path("../#{PROJECT_NAME}.ipa")
 
     deliver(
+      submit_for_review: false,
+      automatic_release: false,
       force: true
     )
 

@@ -34,4 +34,4 @@ copyright "#{Time.now.year} [[PROJECT_NAME]]"
 primary_category ""
 secondary_category ""
 
-release_notes File.read("../release_notes.txt")
+release_notes({"en-US" => File.read("release_notes.txt")})
