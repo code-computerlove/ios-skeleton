@@ -14,6 +14,11 @@ platform :ios do
 
   desc "Run all the tests, perform linting and check code coverage"
   lane :quality do
+<<<<<<< HEAD
+
+    cocoapods
+=======
+>>>>>>> master
 
     cocoapods
 
@@ -124,7 +129,8 @@ platform :ios do
     Actions.lane_context[SharedValues::IPA_OUTPUT_PATH] = File.expand_path("../#{PROJECT_NAME}.ipa")
 
     deliver(
-      skip_deploy: true,
+      submit_for_review: false,
+      automatic_release: false,
       force: true
     )
 
