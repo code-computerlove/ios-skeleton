@@ -1,19 +1,17 @@
 import Foundation
 
 
-class AppConfig: NSObject {
+class AppConfig {
 	
-	var appContentFilePath: String?
-
+	var appContentFilePath: String
+	var settingsFilePath: String
+	var mediaDirectoryPath: String
+	
 	static func create() -> AppConfig {
-		
-		let appConfig = AppConfig()
-		createAppFileStructure(appConfig)
-		
-		return appConfig;
+		return AppConfig()
 	}
 	
-	private static func createAppFileStructure(appConfig: AppConfig) {
+	init() {
 		
 		let paths: NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true);
 		var isDir : ObjCBool = true
@@ -23,20 +21,26 @@ class AppConfig: NSObject {
 			try! NSFileManager.defaultManager().createDirectoryAtPath(contentDirPath, withIntermediateDirectories: false, attributes: nil)
 		}
 		
-		let mediaDirPath =  paths[0].stringByAppendingPathComponent("content/media");
-		if !NSFileManager.defaultManager().fileExistsAtPath(mediaDirPath, isDirectory: &isDir) {
-			try! NSFileManager.defaultManager().createDirectoryAtPath(mediaDirPath, withIntermediateDirectories: false, attributes: nil)
+		mediaDirectoryPath = paths[0].stringByAppendingPathComponent("content/media");
+		
+		if !NSFileManager.defaultManager().fileExistsAtPath(mediaDirectoryPath, isDirectory: &isDir) {
+			try! NSFileManager.defaultManager().createDirectoryAtPath(mediaDirectoryPath,
+				withIntermediateDirectories: false, attributes: nil)
 		}
 		
-		let contentDirUrl = NSURL(fileURLWithPath: contentDirPath)
-		
-		appConfig.appContentFilePath =
-			getFilePath(contentDirUrl, filename: "content.json", createFromBundle: false)
+		appContentFilePath = AppConfig.getFilePath(contentDirPath,
+			filename: "content.json",
+			createFromBundle: true)
+		settingsFilePath = AppConfig.getFilePath(contentDirPath,
+			filename: "settings.plist",
+			createFromBundle: true)
 	}
 	
-	private static func getFilePath(contentDirUrl: NSURL, filename: String, createFromBundle: Bool) -> String {
+	private static func getFilePath(directoryPath: String, filename: String, createFromBundle: Bool) -> String {
 		
-		if let filePath = contentDirUrl.URLByAppendingPathComponent(filename).path {
+		let directoryUrl = NSURL(fileURLWithPath: directoryPath)
+		
+		if let filePath = directoryUrl.URLByAppendingPathComponent(filename).path {
 			if createFromBundle && !NSFileManager.defaultManager().fileExistsAtPath(filePath) {
 				
 				let bundle = NSBundle.mainBundle()
