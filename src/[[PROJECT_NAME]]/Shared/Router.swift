@@ -3,24 +3,37 @@ import UIKit
 
 
 class Router: NSObject {
-
-	weak var navigationController: UINavigationController?
+	
+	let navigationController: UINavigationController
 	var topViewController: UIViewController
 	
 	init(rootViewController: UIViewController, navigationController: UINavigationController) {
 		
 		self.topViewController = rootViewController
 		self.navigationController = navigationController
-		
+
 		super.init()
+		
+		self.navigationController.delegate = self
 	}
 	
 	func isViewControllerPresented(viewController: UIViewController) -> Bool {
-		return self.topViewController.isKindOfClass(viewController.classForCoder)
+		return (self.navigationController.topViewController?.isKindOfClass(viewController.classForCoder))!
 	}
 	
 	func navigateToViewController(viewController: UIViewController) {
-		self.topViewController = viewController;
-		self.navigationController?.pushViewController(viewController, animated: true)
+		self.navigationController.pushViewController(viewController, animated: true)
+	}
+	
+	func resetViewStack(viewController: UIViewController) {
+		self.navigationController.viewControllers = [viewController]
+	}
+}
+
+
+extension Router: UINavigationControllerDelegate {
+	
+	@objc func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+		self.topViewController = viewController
 	}
 }

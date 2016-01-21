@@ -25,8 +25,6 @@
 		BDF5781B1BD7C7D20042652F /* DataStoreWriterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577E31BD7C7D20042652F /* DataStoreWriterProtocol.swift */; };
 		BDF5781C1BD7C7D20042652F /* JsonFileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577E41BD7C7D20042652F /* JsonFileDataStore.swift */; };
 		BDF5781D1BD7C7D20042652F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577E51BD7C7D20042652F /* Router.swift */; };
-		BDF578211BD7C7D20042652F /* ExampleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF577EB1BD7C7D20042652F /* ExampleMapper.swift */; };
-		BDF578241BD7C8330042652F /* ExampleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF578231BD7C8330042652F /* ExampleViewModel.swift */; };
 		BDF578261BD7C9E90042652F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF578251BD7C9E90042652F /* Assets.xcassets */; };
 		BDF578291BD7CA680042652F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF578281BD7CA680042652F /* AppDelegate.swift */; };
 		BDF5784A1BD7CE150042652F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF578491BD7CE150042652F /* MainViewController.swift */; };
@@ -69,8 +67,6 @@
 		BDF577E31BD7C7D20042652F /* DataStoreWriterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreWriterProtocol.swift; sourceTree = "<group>"; };
 		BDF577E41BD7C7D20042652F /* JsonFileDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonFileDataStore.swift; sourceTree = "<group>"; };
 		BDF577E51BD7C7D20042652F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		BDF577EB1BD7C7D20042652F /* ExampleMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleMapper.swift; sourceTree = "<group>"; };
-		BDF578231BD7C8330042652F /* ExampleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewModel.swift; sourceTree = "<group>"; };
 		BDF578251BD7C9E90042652F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDF578281BD7CA680042652F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDF578491BD7CE150042652F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +93,6 @@
 		75DC51AC0D995D5D1EC1591F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -126,7 +121,6 @@
 			children = (
 				BDF578281BD7CA680042652F /* AppDelegate.swift */,
 				BDF5779A1BD7C7D20042652F /* Enitites */,
-				BDF577E61BD7C7D20042652F /* ViewModels */,
 				BDF577A61BD7C7D20042652F /* Modules */,
 				BDF577DF1BD7C7D20042652F /* Shared */,
 				BDF577D51BD7C7D20042652F /* Resources */,
@@ -265,23 +259,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		BDF577E61BD7C7D20042652F /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				BDF577EA1BD7C7D20042652F /* Mapping */,
-				BDF578231BD7C8330042652F /* ExampleViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		BDF577EA1BD7C7D20042652F /* Mapping */ = {
-			isa = PBXGroup;
-			children = (
-				BDF577EB1BD7C7D20042652F /* ExampleMapper.swift */,
-			);
-			path = Mapping;
-			sourceTree = "<group>";
-		};
 		BDF578481BD7CCDC0042652F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,8 +367,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-
-
 		BD85FBC51BDE8C400098F342 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -405,7 +380,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0ae7c1dd2c77628cbc322a6aa34f35759ddffb50 58a040c3b888bc830c2460bbfa0992befa37b3f3b23f5286087e3ab1a59595a1";
 		};
-
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -426,7 +400,6 @@
 				BDF5780A1BD7C7D20042652F /* MainDataManager.swift in Sources */,
 				BDF5784A1BD7CE150042652F /* MainViewController.swift in Sources */,
 				BDF5781C1BD7C7D20042652F /* JsonFileDataStore.swift in Sources */,
-				BDF578241BD7C8330042652F /* ExampleViewModel.swift in Sources */,
 				BDF578111BD7C7D20042652F /* MainWireframe.swift in Sources */,
 				BDF577ED1BD7C7D20042652F /* AppConfig.swift in Sources */,
 				BDF5781D1BD7C7D20042652F /* Router.swift in Sources */,
@@ -435,7 +408,6 @@
 				BDF5781B1BD7C7D20042652F /* DataStoreWriterProtocol.swift in Sources */,
 				BDF5780D1BD7C7D20042652F /* MainPresenter.swift in Sources */,
 				BDF578191BD7C7D20042652F /* Api.swift in Sources */,
-				BDF578211BD7C7D20042652F /* ExampleMapper.swift in Sources */,
 				BDF5780C1BD7C7D20042652F /* MainModuleProtocols.swift in Sources */,
 				BDF577F41BD7C7D20042652F /* ExampleEntity.swift in Sources */,
 				BDF577F31BD7C7D20042652F /* ISO8601DateTransformer.swift in Sources */,
