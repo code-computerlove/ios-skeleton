@@ -29,6 +29,12 @@ platform :ios do
 
     cocoapods
 
+    scan(scheme: "#{PROJECT_NAME}", code_coverage: true, device: 'iPhone 6s')
+
+      Dir.glob('test_output/*.junit').each do |f|
+        FileUtils.mv f, "#{File.dirname(f)}/#{File.basename(f,'.*')}.xml"
+      end
+
     cert
     sigh( adhoc: true)
 
