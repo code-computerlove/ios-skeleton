@@ -14,11 +14,6 @@ platform :ios do
 
   desc "Run all the tests, perform linting and check code coverage"
   lane :quality do
-<<<<<<< HEAD
-
-    cocoapods
-=======
->>>>>>> master
 
     cocoapods
 
@@ -106,6 +101,11 @@ platform :ios do
 
 
   lane :production do
+
+    if File.readlines("../NusExtraDiscountCompanionApp/#{PROJECT_NAME}-Info.plist").grep(/staging|dev|localhost/).size > 0
+      puts("plist contains text (staging/dev/localhost) that makes us believe you may be trying to release whilst pointing to a non-live endpoint. Program will now exit.")
+      return
+    end
 
     cert
     sigh
