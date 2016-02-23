@@ -85,19 +85,19 @@ end
 
     if File.exist?('../release_notes.txt')
       crashlytics(
-        crashlytics_path: 'Crashlytics.framework', # path to your 'Crashlytics.framework'
+        crashlytics_path: 'Pods/Crashlytics', # path to your 'Crashlytics'
         api_token: FABRIC_API_KEY,
         build_secret: FABRIC_SECRET,
-        ipa_path: "#{PROJECT_NAME}.ipa",
+        ipa_path: "./fastlane/#{PROJECT_NAME}.ipa",
         groups: GROUPS,
         notes_path: 'release_notes.txt'
       )
     else
       crashlytics(
-        crashlytics_path: 'Crashlytics.framework', # path to your 'Crashlytics.framework'
+        crashlytics_path: 'Pods/Crashlytics', # path to your 'Crashlytics'
         api_token: FABRIC_API_KEY,
         build_secret: FABRIC_SECRET,
-        ipa_path: "#{PROJECT_NAME}.ipa",
+        ipa_path: "./fastlane/#{PROJECT_NAME}.ipa",
         groups: GROUPS
       )
     end
