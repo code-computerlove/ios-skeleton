@@ -9,11 +9,9 @@ class Api {
 	let FileErrorDomain = "FileErrorDomain"
 	var dateFormatter: NSDateFormatter
 	let baseUrl: String
-	let downloadDirectoryUrl: NSURL
 	
 	required init(baseUrl: String) {
 		self.baseUrl = baseUrl
-		self.downloadDirectoryUrl = downloadDirectoryUrl
 		
 		dateFormatter = NSDateFormatter()
 		dateFormatter.locale = NSLocale(localeIdentifier:"en_GB")
@@ -135,29 +133,10 @@ class Api {
 extension Api: ApiProtocol {
 	
 	func post(path: String, parameters: [String: String]?, completionHandler: (responseObject: AnyObject?, error: AuthenticationError?) -> ()) {
-		request("POST", path: path, parameters: parameters, token: token, completionHandler: completionHandler)
+		request("POST", path: path, parameters: parameters, completionHandler: completionHandler)
 	}
 	
 	func get(path: String, parameters: [String: String]?, completionHandler: (responseObject: AnyObject?, error: AuthenticationError?) -> ()) {
 		request("GET", path: path, parameters: parameters, completionHandler: completionHandler)
-	}
-	
-	func downloadFile(path: String, outputPathUrl: String, parameters : [String: String]?, completionHandler: (responseObject: NSDictionary?, error: ErrorType?) -> (), progressBlock: (bytesRead: Int64) -> ()) {
-		
-		let requestWithError = constructUrlRequest(path, params: parameters, httpMethod: "POST")
-		
-		let destination: (NSURL, NSHTTPURLResponse) -> (NSURL) = {
-			(temporaryURL, response) in
-			
-			return self.downloadDirectoryUrl
-		}
-		
-		Alamofire.download(requestWithError.request, destination: destination)
-			.progress { bytesRead, totalBytesRead, totalBytesExpectedToRead in
-				progressBlock(bytesRead: bytesRead)
-			}
-			.response { request, response, data, error in
-				completionHandler(responseObject: nil, error: error)
-		}
 	}
 }
