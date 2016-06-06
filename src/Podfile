@@ -1,0 +1,23 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, '8.0'
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+def testing_pods
+    pod 'Quick', '~> 0.8.0'
+    pod 'Nimble', '3.0.0'
+end
+
+target '[[PROJECT_NAME]]Tests' do
+    testing_pods
+end
+
+target '[[PROJECT_NAME]]' do
+    pod 'Alamofire', '2.0.2'
+    pod 'ObjectMapper'
+	pod 'SwiftyJSON', '~> 2.3'
+	pod 'CryptoSwift'
+	pod 'Fabric'
+	pod 'Crashlytics'
+    pod 'Google/Analytics'
+end

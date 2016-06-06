@@ -1,0 +1,151 @@
+require 'yaml'
+require 'fileutils'
+
+default_platform :ios
+
+PROJECT_NAME = ENV['PROJECT_NAME']
+FABRIC_API_KEY = ENV['FABRIC_API_KEY']
+FABRIC_SECRET = ENV['FABRIC_BUILD_SECRET']
+GROUPS = ENV['FABRIC_GROUP_ALIASES']
+BUILD_NUMBER = ENV['BUILD_NUMBER']
+
+platform :ios do
+
+  desc "Run all the tests, perform linting and check code coverage"
+  lane :quality do
+
+    cocoapods
+    scan(scheme: "#{PROJECT_NAME}", code_coverage: true)
+
+
+    Dir.glob('test_output/*.junit').each do |f|
+    FileUtils.mv f, "#{File.dirname(f)}/#{File.basename(f,'.*')}.xml"
+end
+
+  end
+
+  lane :build do
+
+    cocoapods
+
+    scan(scheme: "#{PROJECT_NAME}", code_coverage: true, device: 'iPhone 6s')
+
+    Dir.glob('test_output/*.junit').each do |f|
+      FileUtils.mv f, "#{File.dirname(f)}/#{File.basename(f,'.*')}.xml"
+    end
+
+    cert
+    sigh( adhoc: true)
+
+    # use the UDID of the newly created provisioning profile
+    ENV["PROFILE_UDID"] = Actions.lane_context[Actions::SharedValues::SIGH_UDID]
+
+    build_number = ENV["BUILD_NUMBER"].to_i
+
+    increment_build_number(
+      build_number: build_number
+    )
+
+    # Set version number to the one at the top of the CHANGELOG
+    changelog = YAML.load_file('../../CHANGELOG.yml')
+    version_number = changelog['upcoming']['version']
+
+    # Increment to the changelog version number
+    increment_version_number(
+      version_number: version_number
+    )
+
+    gym(scheme: "#{PROJECT_NAME}", use_legacy_build_api: true, output_directory: "./fastlane")
+
+    commit_version_bump(
+      message: "Deploying version #{version_number} (#{build_number})",
+      xcodeproj: "./#{PROJECT_NAME}.xcodeproj",
+      force: true
+    )
+
+    add_git_tag tag: "#{version_number}_#{build_number}"
+    push_to_git_remote
+
+  end
+
+  desc "Submit a new Build to Fabric"
+  desc "This will also make sure the profile is up to date"
+  lane :uat do
+
+    # Set version number to the one at the top of the CHANGELOG
+    changelog = YAML.load_file('../../CHANGELOG.yml')
+    version_number = changelog['upcoming']['version']
+
+    # Generate release notes from CHANGELOG
+    release_notes = changelog['upcoming']['notes'].map{ |note| note.prepend '- ' }.join("\n")
+
+    out_file = File.new("../release_notes.txt", "w+")
+    out_file.puts(release_notes)
+    out_file.close
+
+    if File.exist?('../release_notes.txt')
+      crashlytics(
+        crashlytics_path: 'Pods/Crashlytics', # path to your 'Crashlytics'
+        api_token: FABRIC_API_KEY,
+        build_secret: FABRIC_SECRET,
+        ipa_path: "./fastlane/#{PROJECT_NAME}.ipa",
+        groups: GROUPS,
+        notes_path: 'release_notes.txt'
+      )
+    else
+      crashlytics(
+        crashlytics_path: 'Pods/Crashlytics', # path to your 'Crashlytics'
+        api_token: FABRIC_API_KEY,
+        build_secret: FABRIC_SECRET,
+        ipa_path: "./fastlane/#{PROJECT_NAME}.ipa",
+        groups: GROUPS
+      )
+    end
+
+  end
+
+
+  lane :production do
+
+    `unzip #{PROJECT_NAME}.ipa`
+    `plutil -convert xml1 Payload/#{PROJECT_NAME}.app/Info.plist`
+    if File.readlines("Payload/#{PROJECT_NAME}.app/Info.plist").grep(/staging|dev|localhost/).size > 0
+      puts("plist contains text (staging/dev/localhost) that makes us believe you may be trying to release whilst pointing to a non-live endpoint. Program will now exit.")
+      return
+    end
+
+    cert
+    sigh
+
+    resign(
+      ipa: "./fastlane/#{PROJECT_NAME}.ipa"
+    )
+
+    # Set version number to the one at the top of the CHANGELOG
+    changelog = YAML.load_file('../../CHANGELOG.yml')
+    version_number = changelog['upcoming']['version']
+
+    # Generate release notes from CHANGELOG
+    release_notes = changelog['upcoming']['notes'].map{ |note| note.prepend '- ' }.join("\n")
+
+    out_file = File.new("../release_notes.txt", "w+")
+    out_file.puts(release_notes)
+    out_file.close
+
+    Actions.lane_context[SharedValues::VERSION_NUMBER] = version_number
+    Actions.lane_context[SharedValues::IPA_OUTPUT_PATH] = File.expand_path("#{PROJECT_NAME}.ipa")
+
+    deliver
+
+  end
+
+  after_all do |lane|
+
+  end
+
+
+  error do |lane, exception|
+
+  end
+
+end

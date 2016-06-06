@@ -1,0 +1,8 @@
+upcoming: 
+  version: 0.0.1
+  notes:
+  - Initialised Repository
+releases:
+- version: 0.0.0
+  notes:
+  - First release

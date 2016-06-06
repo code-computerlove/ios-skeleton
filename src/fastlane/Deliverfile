@@ -1,0 +1,42 @@
+ipa "./fastlane/#{ENV['PROJECT_NAME']}.ipa"
+
+username ""
+screenshots_path "./fastlane/screenshots"
+
+automatic_release false
+submit_for_review false
+force true
+
+price_tier 0
+app_rating_config_path "./fastlane/metadata/app_rating.json"
+app_icon "./fastlane/metadata/iTunesArtwork.png"
+
+app_review_information(
+  first_name: "",
+  last_name: "",
+  phone_number: "",
+  email_address: ""
+)
+
+submission_information({
+  add_id_info_limits_tracking: false,
+  add_id_info_serves_ads: false,
+  add_id_info_tracks_action: false,
+  add_id_info_tracks_install: false,
+  add_id_info_uses_idfa: false,
+  content_rights_contains_third_party_content: false,
+  content_rights_has_rights: false,
+  export_compliance_contains_proprietary_cryptography: false,
+  export_compliance_contains_third_party_cryptography: false,
+  export_compliance_is_exempt: false,
+  export_compliance_uses_encryption: false
+})
+
+copyright "#{Time.now.year} Code Computerlove"
+
+primary_category ""
+secondary_category ""
+
+release_notes(
+  "en-GB" => File.read("release_notes.txt")
+)
