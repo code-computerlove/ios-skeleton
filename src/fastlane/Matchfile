@@ -1,0 +1,8 @@
+git_url "git@bitbucket.org:codecomputerlove/ios-certificates.git"
+git_branch ""
+type "development" # The default type, can be: appstore, adhoc, enterprise or development
+
+app_identifier [""]
+username "mobileapps@codecomputerlove.com"
+
+# For all available options run `fastlane match --help`
